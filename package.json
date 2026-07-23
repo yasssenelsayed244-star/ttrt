@@ -1,0 +1,24 @@
+{
+  "name": "quickbite",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "predev": "node scripts/check-dev-ports.js",
+    "dev": "concurrently -n FE,BE -c cyan,yellow \"npm run dev --workspace=apps/customer\" \"npm run dev --workspace=apps/backend\"",
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:frontend": "npm run dev --workspace=apps/customer",
+    "dev:customer": "npm run dev --workspace=apps/customer",
+    "build": "npm run build --workspace=apps/customer",
+    "seed": "npm run seed --workspace=apps/backend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
